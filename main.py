@@ -6,7 +6,7 @@ from datetime import date, time, timedelta, timezone
 TOKEN = 'YOUR TOKEN '
 CHANNEL_ID = 'YOUR CHANNEL_ID'
 START_MESSAGE = 'YOUR START_MESSAGE'
-EVENT_MSG = 'YOUR START_MESSAGE'
+EVENT_MSG = 'YOUR {days} EVENT_MESSAGE'
 
 bot = ApplicationBuilder().token(TOKEN).build()
 
@@ -29,7 +29,7 @@ async def send_msg_to_channel(ctx: CallbackContext):
         wdays = wdays_format(end_days)
         await ctx.bot.send_message(
             chat_id=CHANNEL_ID,
-            text=EVENT_MSG
+            text=EVENT_MSG.format(days=wdays)
         )
 
 
